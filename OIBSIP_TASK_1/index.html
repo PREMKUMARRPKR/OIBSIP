@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: aliceblue;
+    outline: none;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+#container{
+    background-color: #ff4f4f;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 12px black;
+}
+#calculator{
+    background-color: rgb(65, 170, 255);
+    border-radius: 30px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(4,68px);
+    box-shadow: inset 5px 5px 12px rgb(185, 224, 255),
+                -5px -5px 10px rgb(114, 191, 255);
+    
+
+}
+input{padding: 15px;
+    height: 3em;
+    width: 14rem;
+    background-color: rgb(185, 224, 255);
+    border: none;
+    border-radius: 30px;
+    box-shadow: inset 5px 5px 12px rgba(192, 192, 192, 0.438),
+                -5px -5px 10px rgb(209, 235, 255);
+    text-align: end;
+    grid-column:span 4;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: -5px;
+}
+button{
+    font-family: 'Courier New', Courier, monospace;
+    font-style: bold;
+    padding: 5px;
+    height:50px;
+    width: 50px;
+    margin: 5px;
+    background-color: rgb(122, 195, 255);
+    border: none;
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 12px rgb(185, 224, 255),
+                -5px -5px 10px rgb(142, 206, 255);
+
+}
+#equal{
+    width: 125px;
+    border-radius: 10px;
+    
+}
+</style>
+  
+    <title>Glowing Arithmetic Calculator</title>
+</head>
+<body>
+    <div id="container">
+        <div id="calculator">
+            <input type="text" placeholder="Input Here" id="outputtoscreen">
+            <button onclick="Clear()">AC</button>
+            <button onclick="del()">DEL</button> 
+            <button onclick="display('%')">%</button>
+            <button onclick="display('/')">/</button>
+            <button onclick="display('7')">7</button>
+            <button onclick="display('8')">8</button>
+            <button onclick="display('9')">9</button>
+            <button onclick="display('*')">*</button>
+            <button onclick="display('4')">4</button>
+            <button onclick="display('5')">5</button>
+            <button onclick="display('6')">6</button>
+            <button onclick="display('-')">-</button>
+            <button onclick="display('1')">1</button>
+            <button onclick="display('2')">2</button>
+            <button onclick="display('3')">3</button>
+            <button onclick="display('+')">+</button>
+            <button onclick="display('0')">0</button>
+            <button onclick="display('.')">.</button>
+            <button id="equal" onclick="Calculate()">=</button>
+        </div>
+    </div>
+    <script>
+        let output= document.getElementById("outputtoscreen");
+        function display(num){
+            output.value+=num;
+        }
+        function Calculate(){
+            try{
+            output.value=eval(output.value)
+        }
+        catch(err)
+        {
+            alert("This is an Invalid Expression")
+        }
+        }
+        function clear(){
+            output.value="";  
+        }
+        function del(){
+            output.value=output.value.slice(0,-1);
+        }
+    </script>
+</body>
+</html>
